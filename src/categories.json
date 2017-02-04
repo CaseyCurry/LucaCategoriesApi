@@ -1,0 +1,39 @@
+{
+  "housing": [
+    "mortgage",
+    "rent",
+    "utilities",
+    "insurance/taxes",
+    "maintenance",
+    "renovation",
+    "miscellaneous"
+  ],
+  "transportation": [
+    "car note",
+    "insurance",
+    "fuel",
+    "maintenance",
+    "public transport",
+    "miscellaneous"
+  ],
+  "food": [
+    "restaraunt",
+    "groceries",
+    "fast food",
+    "work lunch",
+    "miscellaneous"
+  ],
+  "recreation": [
+    "bar",
+    "dating",
+    "music",
+    "books",
+    "miscellaneous"
+  ],
+  "professional": [
+    "books",
+    "training",
+    "computer equipment",
+    "software licences"
+  ]
+}

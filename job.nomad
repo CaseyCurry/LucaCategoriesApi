@@ -1,5 +1,5 @@
 job "luca-services-categories-api" {
-	datacenters = ["devlab"]
+	datacenters = ["dev-lab"]
 	type = "service"
   constraint {
     attribute = "${driver.rkt}"

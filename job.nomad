@@ -16,7 +16,7 @@ job "luca-services-categories-api" {
 			driver = "rkt"
 			config {
 				image = "luca.com/categories-api:latest"
-        insecure-options = ["image" ]
+        insecure_options = ["image" ]
 				port_map {
 					app = "http"
 				}

@@ -22,7 +22,7 @@ job "luca-services-categories-api" {
 				}
 			}
 			service {
-        name = ${JOB}
+        name = "luca-services-categories-api"
 				port = "http"
 				check {
 					name = "healthy"

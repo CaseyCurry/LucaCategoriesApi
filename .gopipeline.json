@@ -141,7 +141,7 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "container/**/*",
+        "source": "container",
         "destination": "container",
         "type": "build"
       }],

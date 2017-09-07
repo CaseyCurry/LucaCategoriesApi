@@ -275,7 +275,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "mkdir ./container && acbuild write .container/categories-api.$GO_REVISION.aci"
+          "mkdir ./container && acbuild write ./container/categories-api.$GO_REVISION.aci"
         ],
         "working_directory": null
       }, {

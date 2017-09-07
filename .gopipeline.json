@@ -135,6 +135,70 @@
         ],
         "working_directory": null
       }]
+    }, {
+      "name": "Containerize",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "container.aci",
+        "destination": "categories-api.$GO_REVISION.aci",
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "fetch",
+        "run_if": "passed",
+        "pipeline": "CategoriesApi",
+        "stage": "Build",
+        "job": "Build",
+        "is_source_a_file": false,
+        "source": "node_modules",
+        "destination": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "$(which npm) install"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "node_modules/.bin/webpack",
+        "arguments": [],
+        "working_directory": null
+      }]
+    }, {
+      "name": "SaveVersion",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "version.txt",
+        "destination": null,
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "printf $GO_REVISION > version.txt"
+        ],
+        "working_directory": null
+      }]
     }]
   }]
 }

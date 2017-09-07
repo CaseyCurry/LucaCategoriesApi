@@ -121,7 +121,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "TRANSACTIONS_STORE=http://192.168.56.104:5984 node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
+          "node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
         ],
         "working_directory": null
       }, {
@@ -131,7 +131,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "TRANSACTIONS_STORE=http://192.168.56.104:5984 node_modules/.bin/nyc ./node_modules/.bin/mocha --opts mocha.opts"
+          "node_modules/.bin/nyc ./node_modules/.bin/mocha --opts mocha.opts"
         ],
         "working_directory": null
       }]

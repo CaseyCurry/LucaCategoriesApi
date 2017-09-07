@@ -141,7 +141,7 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "./*.aci",
+        "source": "*.aci",
         "destination": null,
         "type": "build"
       }],

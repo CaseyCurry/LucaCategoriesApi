@@ -103,7 +103,7 @@
         "job": "Build",
         "is_source_a_file": false,
         "source": "node_modules",
-        "destination": "node_modules"
+        "destination": null
       }, {
         "type": "exec",
         "run_if": "passed",

@@ -1,8 +1,8 @@
-job "luca-services-categories-api" {
+job "categories-api" {
 	datacenters = ["dev-lab"]
 	type = "service"
   constraint {
-    attribute = "${driver.rkt}"
+    attribute = "${meta.rkt}"
     value = "1"
   }
   group "service" {
@@ -15,17 +15,17 @@ job "luca-services-categories-api" {
 		task "api" {
 			driver = "rkt"
 			config {
-				image = "luca.com/categories-api:latest"
+				image = "https://raw.githubusercontent.com/caseycurry/LucaOpsEnvironment/master/containers/categories-api.test.aci"
         insecure_options = ["image" ]
 				port_map {
 					app = "http"
 				}
 			}
 			service {
-        name = "luca-services-categories-api"
-				port = "http"
+        name = "categories-api"
+				tags = ["luca"]
+				port = "app"
 				check {
-					name = "healthy"
 					type = "http"
           path = "/"
 					interval = "10s"
@@ -37,7 +37,7 @@ job "luca-services-categories-api" {
 				memory = 64 # 64MB
 				network {
 					mbits = 10
-					port "http" {}
+					port "app" {}
 				}
 			}
 		}

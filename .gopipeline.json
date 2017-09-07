@@ -164,7 +164,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "$(which npm) install"
+          "$(which npm) rebuild"
         ],
         "working_directory": null
       }, {
@@ -173,6 +173,129 @@
         "on_cancel": null,
         "command": "node_modules/.bin/webpack",
         "arguments": [],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "mkdir",
+        "arguments": [
+          "dependencies"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "curl",
+        "arguments": [
+          "https://raw.githubusercontent.com/CaseyCurry/LucaOpsEnvironment/master/dependencies/nodejs/latest/nodejs-6.9.5"
+        ],
+        "working_directory": "dependencies"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "begin"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "begin"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "set-name",
+          "luca.com/categories-api"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "label",
+          "add",
+          "version",
+          "$GO_REVISION"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "copy",
+          "dist",
+          "/dist"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "copy",
+          "dependencies/nodejs-6.9.5",
+          "/nodejs-6.9.5"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "set-exec",
+          "/nodejs-6.9.5",
+          "/dist/host.js"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "port",
+          "add",
+          "http",
+          "tcp",
+          "8080"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "write",
+          "./categories-api.$GO_REVISION.aci"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "end"
+        ],
         "working_directory": null
       }]
     }, {

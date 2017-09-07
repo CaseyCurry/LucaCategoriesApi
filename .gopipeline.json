@@ -189,6 +189,7 @@
         "on_cancel": null,
         "command": "curl",
         "arguments": [
+          "-O",
           "https://raw.githubusercontent.com/CaseyCurry/LucaOpsEnvironment/master/dependencies/nodejs/latest/nodejs-6.9.5"
         ],
         "working_directory": "dependencies"

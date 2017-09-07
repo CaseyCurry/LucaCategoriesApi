@@ -141,8 +141,8 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "container.aci",
-        "destination": "categories-api.$GO_REVISION.aci",
+        "source": "categories-api.$GO_REVISION.aci",
+        "destination": null,
         "type": "build"
       }],
       "properties": [],

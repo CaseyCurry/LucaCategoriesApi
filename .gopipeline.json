@@ -141,7 +141,7 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "categories-api.$GO_REVISION.aci",
+        "source": "./*.aci",
         "destination": null,
         "type": "build"
       }],
@@ -216,12 +216,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "/bin/bash",
         "arguments": [
-          "label",
-          "add",
-          "version",
-          "$GO_REVISION"
+          "-c",
+          "acbuild label add version $GO_REVISION"
         ],
         "working_directory": null
       }, {
@@ -274,10 +272,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "/bin/bash",
         "arguments": [
-          "write",
-          "./categories-api.$GO_REVISION.aci"
+          "-c",
+          "acbuild write ./categories-api.$GO_REVISION.aci"
         ],
         "working_directory": null
       }, {

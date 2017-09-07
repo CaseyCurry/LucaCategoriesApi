@@ -1,0 +1,184 @@
+{
+  "group": "Commits",
+  "name": "CategoriesApi",
+  "label_template": "${COUNT}",
+  "enable_pipeline_locking": false,
+  "tracking_tool": null,
+  "timer": null,
+  "environment_variables": [],
+  "materials": [{
+    "url": "https://github.com/caseycurry/LucaCategoriesApi",
+    "branch": "master",
+    "filter": null,
+    "destination": null,
+    "auto_update": true,
+    "name": null,
+    "type": "git"
+  }],
+  "stages": [{
+    "name": "Build",
+    "fetch_materials": true,
+    "never_cleanup_artifacts": false,
+    "clean_working_directory": true,
+    "environment_variables": [{
+      "name": "PATH",
+      "value": "/usr/local/bin:/usr/bin:/bin"
+    }],
+    "jobs": [{
+      "name": "Build",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "node_modules/**/*",
+        "destination": "node_modules",
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "$(which npm) install"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "$(which npm) install mochawesome mocha-multi"
+        ],
+        "working_directory": null
+      }]
+    }]
+  }, {
+    "name": "Package",
+    "fetch_materials": true,
+    "never_cleanup_artifacts": false,
+    "clean_working_directory": true,
+    "environment_variables": [{
+      "name": "PATH",
+      "value": "/usr/local/bin:/usr/bin:/bin"
+    }],
+    "jobs": [{
+      "name": "UnitTest",
+      "environment_variables": [],
+      "tabs": [{
+        "name": "Report",
+        "path": "mochawesome/mochawesome.html"
+      }, {
+        "name": "Coverage",
+        "path": "coverage/lcov-report/index.html"
+      }],
+      "resources": [],
+      "artifacts": [{
+        "source": "mochawesome-report/**/*",
+        "destination": "mochawesome",
+        "type": "build"
+      }, {
+        "source": "spec/coverage",
+        "destination": null,
+        "type": "build"
+      }, {
+        "source": "specs.xml",
+        "destination": null,
+        "type": "test"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "fetch",
+        "run_if": "passed",
+        "pipeline": "CategoriesApi",
+        "stage": "Build",
+        "job": "Build",
+        "is_source_a_file": false,
+        "source": "node_modules",
+        "destination": "node_modules"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "TRANSACTIONS_STORE=http://192.168.56.104:5984 node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "TRANSACTIONS_STORE=http://192.168.56.104:5984 node_modules/.bin/nyc ./node_modules/.bin/mocha --opts mocha.opts"
+        ],
+        "working_directory": null
+      }]
+    }, {
+      "name": "Containerize",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "container.aci",
+        "destination": "categories-api.$GO_REVISION.aci",
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "fetch",
+        "run_if": "passed",
+        "pipeline": "CategoriesApi",
+        "stage": "Build",
+        "job": "Build",
+        "is_source_a_file": false,
+        "source": "node_modules",
+        "destination": "node_modules"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "node_modules/.bin/webpack",
+        "arguments": [],
+        "working_directory": null
+      }]
+    }, {
+      "name": "SaveVersion",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "version.txt",
+        "destination": null,
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "printf $GO_REVISION > version.txt"
+        ],
+        "working_directory": null
+      }]
+    }]
+  }]
+}

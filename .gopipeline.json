@@ -111,6 +111,16 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
+          "$(which npm) rebuild"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
           "TRANSACTIONS_STORE=http://192.168.56.104:5984 node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
         ],
         "working_directory": null
@@ -147,6 +157,16 @@
         "is_source_a_file": false,
         "source": "node_modules",
         "destination": "node_modules"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "$(which npm) install"
+        ],
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",

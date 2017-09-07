@@ -141,8 +141,8 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "*.aci",
-        "destination": null,
+        "source": "container/*",
+        "destination": "container",
         "type": "build"
       }],
       "properties": [],
@@ -275,7 +275,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "acbuild write ./categories-api.$GO_REVISION.aci"
+          "mkdir ./container && acbuild write .container/categories-api.$GO_REVISION.aci"
         ],
         "working_directory": null
       }, {

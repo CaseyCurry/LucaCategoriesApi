@@ -141,7 +141,7 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "container/*",
+        "source": "container/**/*",
         "destination": "container",
         "type": "build"
       }],
@@ -285,6 +285,30 @@
         "command": "acbuild",
         "arguments": [
           "end"
+        ],
+        "working_directory": null
+      }]
+    }, {
+      "name": "SaveVersion",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "version.txt",
+        "destination": null,
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "/bin/bash",
+        "arguments": [
+          "-c",
+          "printf $GO_REVISION > version.txt"
         ],
         "working_directory": null
       }]

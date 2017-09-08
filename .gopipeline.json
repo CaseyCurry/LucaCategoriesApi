@@ -323,7 +323,7 @@
       "value": "/usr/local/bin:/usr/bin:/bin"
     }],
     "jobs": [{
-      "name": "Build",
+      "name": "SubmitNomadJob",
       "environment_variables": [],
       "tabs": [],
       "resources": [],

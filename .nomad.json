@@ -36,7 +36,7 @@
           "Checks": [{
             "Name": "healthy",
             "Type": "http",
-            "Path": "/",
+            "Path": "/api/categories",
             "Interval": 10000000000,
             "Timeout": 2000000000
           }]

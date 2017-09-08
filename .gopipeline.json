@@ -344,10 +344,8 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "printf",
-        "arguments": [
-          "$(whoami)"
-        ],
+        "command": "whoami",
+        "arguments": [],
         "working_directory": null
       }, {
         "type": "exec",

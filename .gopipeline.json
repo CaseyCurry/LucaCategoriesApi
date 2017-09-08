@@ -197,6 +197,16 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
+        "command": "chmod",
+        "arguments": [
+          "u+x",
+          "./nodejs-6.9.5"
+        ],
+        "working_directory": "dependencies"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
         "command": "acbuild",
         "arguments": [
           "begin"

@@ -60,7 +60,7 @@
       }]
     }]
   }, {
-    "name": "Package",
+    "name": "Containerize",
     "fetch_materials": true,
     "never_cleanup_artifacts": false,
     "clean_working_directory": true,
@@ -142,7 +142,7 @@
       "resources": [],
       "artifacts": [{
         "source": "container",
-        "destination": "container",
+        "destination": null,
         "type": "build"
       }],
       "properties": [],
@@ -309,6 +309,46 @@
         "arguments": [
           "-c",
           "printf $GO_REVISION > version.txt"
+        ],
+        "working_directory": null
+      }]
+    }]
+  }, {
+    "name": "DeployToDev",
+    "fetch_materials": true,
+    "never_cleanup_artifacts": false,
+    "clean_working_directory": true,
+    "environment_variables": [{
+      "name": "PATH",
+      "value": "/usr/local/bin:/usr/bin:/bin"
+    }],
+    "jobs": [{
+      "name": "Build",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "fetch",
+        "run_if": "passed",
+        "pipeline": "CategoriesApi",
+        "stage": "Containerize",
+        "job": "Containerize",
+        "is_source_a_file": false,
+        "source": "container",
+        "destination": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "scp",
+        "arguments": [
+          "scp",
+          "container/*",
+          "cj@192.168.56.110:/www/containers"
         ],
         "working_directory": null
       }]

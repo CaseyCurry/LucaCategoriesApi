@@ -346,7 +346,6 @@
         "on_cancel": null,
         "command": "scp",
         "arguments": [
-          "scp",
           "'container/*'",
           "cj@192.168.56.110:/www/containers",
           "-o StrictHostKeyChecking=no"

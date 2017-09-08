@@ -354,10 +354,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "bash",
+        "command": "/bin/bash",
         "arguments": [
           "-c",
-          "sed -i 's/{{version}}/$GO_REVISION/' ./.nomad.json"
+          "sed 's/{{version}}/$GO_REVISION/' ./.nomad.json"
         ],
         "working_directory": null
       }, {

@@ -350,6 +350,30 @@
           "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers"
         ],
         "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "sed -i 's/{{version}}/$GO_REVISION/' ./.nomad.json"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "curl",
+        "arguments": [
+          "-XPOST",
+          "http://192.168.56.110:4646/v1/jobs",
+          "-H",
+          "Content-Type: application/json",
+          "--body",
+          "@.nomad.json"
+        ],
+        "working_directory": null
       }]
     }]
   }]

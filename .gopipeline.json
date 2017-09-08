@@ -348,7 +348,8 @@
         "arguments": [
           "scp",
           "container/*",
-          "cj@192.168.56.110:/www/containers"
+          "cj@192.168.56.110:/www/containers",
+          "-o StrictHostKeyChecking=no"
         ],
         "working_directory": null
       }]

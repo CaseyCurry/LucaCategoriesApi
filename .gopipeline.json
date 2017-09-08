@@ -347,7 +347,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "scp container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers -o StrictHostKeyChecking=no"
+          "scp  -o StrictHostKeyChecking=no ./container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers"
         ],
         "working_directory": null
       }]

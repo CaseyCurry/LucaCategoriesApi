@@ -42,6 +42,10 @@
               "Label": "app"
             }]
           }]
+        },
+        "LogConfig": {
+          "MaxFiles": 5,
+          "MaxFileSizeMB": 10
         }
       }],
       "RestartPolicy": {
@@ -51,7 +55,7 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 50
+        "SizeMB": 100
       }
     }]
   }

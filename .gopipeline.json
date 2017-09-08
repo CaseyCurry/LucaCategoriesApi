@@ -370,8 +370,8 @@
           "http://192.168.56.110:4646/v1/jobs",
           "-H",
           "Content-Type: application/json",
-          "--body",
-          "@.nomad.json"
+          "--data-binary",
+          "@./.nomad.json"
         ],
         "working_directory": null
       }]

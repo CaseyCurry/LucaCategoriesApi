@@ -1,4 +1,7 @@
 {
+  "test": [
+    "test2"
+  ],
   "housing": [
     "mortgage",
     "rent",

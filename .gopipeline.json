@@ -347,7 +347,7 @@
         "command": "scp",
         "arguments": [
           "scp",
-          "container/*",
+          "'container/*'",
           "cj@192.168.56.110:/www/containers",
           "-o StrictHostKeyChecking=no"
         ],

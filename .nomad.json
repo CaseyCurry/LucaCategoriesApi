@@ -8,8 +8,7 @@
     ],
     "Constraints": [{
       "LTarget": "${meta.rkt}",
-      "RTarget": "1",
-      "Operand": "="
+      "RTarget": "1"
     }],
     "TaskGroups": [{
       "Name": "service",

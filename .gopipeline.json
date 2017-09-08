@@ -344,13 +344,6 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "whoami",
-        "arguments": [],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
         "command": "/bin/bash",
         "arguments": [
           "-c",

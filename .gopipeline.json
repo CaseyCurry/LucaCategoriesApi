@@ -377,7 +377,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "STATUS_CODE=$(curl -v -XPOST http://192.168.56.110:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') && \"if [ $STATUS_CODE -ne 200 ]; then exit 1; fi\""
+          "\" if [ $(curl -v -XPOST http://192.168.56.110:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi\""
         ],
         "working_directory": null
       }]

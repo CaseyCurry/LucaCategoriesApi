@@ -357,7 +357,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "sed 's/{{version}}/$GO_REVISION/' ./.nomad.json"
+          "sed -i \"s/{{version}}/$GO_REVISION/\" ./.nomad.json"
         ],
         "working_directory": null
       }, {

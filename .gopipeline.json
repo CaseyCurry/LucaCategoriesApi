@@ -374,10 +374,20 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
+        "command": "STATUS_CODE=/bin/bash",
+        "arguments": [
+          "-c",
+          "curl -XPOST http://192.168.56.110:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //'"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "\" if [ $(curl -XPOST http://192.168.56.110:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi\""
+          "\" if [ $STATUS_CODE -ne 200 ]; then exit 1; fi\""
         ],
         "working_directory": null
       }]

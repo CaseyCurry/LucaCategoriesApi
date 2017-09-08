@@ -344,11 +344,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "scp",
+        "command": "/bin/bash",
         "arguments": [
-          "'container/*'",
-          "cj@192.168.56.110:/www/containers",
-          "-o StrictHostKeyChecking=no"
+          "-c",
+          "scp container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers -o StrictHostKeyChecking=no"
         ],
         "working_directory": null
       }]

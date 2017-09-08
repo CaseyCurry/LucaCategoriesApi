@@ -387,7 +387,7 @@
         "command": "/bin/bash",
         "arguments": [
           "-c",
-          "\"if [ 500 -ne 200 ]; then exit 1; fi\""
+          "if [ 500 -ne 200 ]; then exit 1; fi"
         ],
         "working_directory": null
       }]

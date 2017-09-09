@@ -1,5 +1,5 @@
 {
-  "group": "Commits",
+  "group": "Commit",
   "name": "CategoriesApi",
   "label_template": "${COUNT}",
   "enable_pipeline_locking": false,
@@ -41,20 +41,20 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "npm",
         "arguments": [
-          "-c",
-          "$(which npm) install"
+          "install"
         ],
         "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "npm",
         "arguments": [
-          "-c",
-          "$(which npm) install mochawesome mocha-multi"
+          "install",
+          "mochawesome",
+          "mocha-multi"
         ],
         "working_directory": null
       }]
@@ -102,36 +102,35 @@
         "stage": "Build",
         "job": "Build",
         "is_source_a_file": false,
-        "source": "node_modules",
+        "source": "./node_modules",
         "destination": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "npm",
         "arguments": [
-          "-c",
-          "$(which npm) rebuild"
+          "rebuild"
         ],
         "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
-          "node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
+          "./node_modules/.bin/mocha --opts mocha.opts --reporter mocha-multi --reporter-options mochawesome=-,xunit=specs.xml"
         ],
         "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
-          "node_modules/.bin/nyc ./node_modules/.bin/mocha --opts mocha.opts"
+          "./node_modules/.bin/nyc ./node_modules/.bin/mocha --opts ./mocha.opts"
         ],
         "working_directory": null
       }]
@@ -155,23 +154,22 @@
         "stage": "Build",
         "job": "Build",
         "is_source_a_file": false,
-        "source": "node_modules",
+        "source": "./node_modules",
         "destination": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "npm",
         "arguments": [
-          "-c",
-          "$(which npm) rebuild"
+          "rebuild"
         ],
         "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "node_modules/.bin/webpack",
+        "command": "./node_modules/.bin/webpack",
         "arguments": [],
         "working_directory": null
       }, {
@@ -180,7 +178,7 @@
         "on_cancel": null,
         "command": "mkdir",
         "arguments": [
-          "dependencies"
+          "./dependencies"
         ],
         "working_directory": null
       }, {
@@ -192,7 +190,7 @@
           "-O",
           "https://raw.githubusercontent.com/CaseyCurry/LucaOpsEnvironment/master/dependencies/nodejs/latest/nodejs-6.9.5"
         ],
-        "working_directory": "dependencies"
+        "working_directory": "./dependencies"
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -202,7 +200,7 @@
           "u+x",
           "./nodejs-6.9.5"
         ],
-        "working_directory": "dependencies"
+        "working_directory": "./dependencies"
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -226,7 +224,7 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
           "acbuild label add version $GO_REVISION"
@@ -239,7 +237,7 @@
         "command": "acbuild",
         "arguments": [
           "copy",
-          "dist",
+          "./dist",
           "/dist"
         ],
         "working_directory": null
@@ -250,7 +248,7 @@
         "command": "acbuild",
         "arguments": [
           "copy",
-          "dependencies/nodejs-6.9.5",
+          "./dependencies/nodejs-6.9.5",
           "/nodejs-6.9.5"
         ],
         "working_directory": null
@@ -282,7 +280,7 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
           "mkdir ./container && acbuild write ./container/categories-api.$GO_REVISION.aci"
@@ -315,10 +313,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
-          "printf $GO_REVISION > version.txt"
+          "printf $GO_REVISION > ./version.txt"
         ],
         "working_directory": null
       }]
@@ -348,13 +346,13 @@
         "stage": "Containerize",
         "job": "Containerize",
         "is_source_a_file": false,
-        "source": "container",
+        "source": "./container",
         "destination": null
       }, {
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
           "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers"
@@ -364,7 +362,7 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
           "sed -i \"s/{{version}}/$GO_REVISION/\" ./.nomad.json"
@@ -374,7 +372,7 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "/bin/bash",
+        "command": "bash",
         "arguments": [
           "-c",
           "if [ $(curl -XPOST http://192.168.56.110:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi"

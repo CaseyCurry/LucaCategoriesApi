@@ -138,7 +138,10 @@
       }]
     }, {
       "name": "Containerize",
-      "environment_variables": [],
+      "environment_variables": [{
+        "name": "CONTAINER_NAME",
+        "value": "categories-api"
+      }],
       "tabs": [],
       "resources": [],
       "artifacts": [{
@@ -216,10 +219,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "bash",
         "arguments": [
-          "set-name",
-          "luca.com/categories-api"
+          "-c",
+          "acbuild set-name luca.com/$CONTAINER_NAME"
         ],
         "working_directory": null
       }, {
@@ -285,7 +288,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "mkdir ./container && acbuild write ./container/categories-api.$GO_REVISION.aci"
+          "mkdir ./container && acbuild write ./container/$CONTAINER_NAME.$GO_REVISION.aci"
         ],
         "working_directory": null
       }, {
@@ -357,7 +360,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@192.168.56.110 \"cd /www/containers && ls -t | grep -e 'categories-api' | tail -n +4 | xargs -r rm\""
+          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@192.168.56.110 \"cd /www/containers && ls -t | grep -e '$CONTAINER_NAME' | tail -n +4 | xargs -r rm\""
         ],
         "working_directory": null
       }, {
@@ -367,7 +370,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/categories-api.$GO_REVISION.aci cj@192.168.56.110:/www/containers"
+          "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/$CONTAINER_NAME.$GO_REVISION.aci cj@192.168.56.110:/www/containers"
         ],
         "working_directory": null
       }, {

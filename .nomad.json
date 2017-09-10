@@ -27,7 +27,7 @@
           }]
         },
         "Services": [{
-          "Id": "",
+          "Id": "/api/categories",
           "Name": "categories-api",
           "Tags": [
             "luca"

@@ -357,7 +357,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@192.168.56.110:/www/containers \"ls -t /www/containers | grep -e 'categories-api' | tail -n +4 | xargs -r rm\""
+          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@192.168.56.110 \"ls -t /www/containers | grep -e 'categories-api' | tail -n +4 | xargs -r rm\""
         ],
         "working_directory": null
       }, {

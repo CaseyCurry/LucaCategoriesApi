@@ -35,7 +35,7 @@
         "type": "build"
       }, {
         "source": ".nomad.json",
-        "destination": "container",
+        "destination": null,
         "type": "build"
       }],
       "properties": [],

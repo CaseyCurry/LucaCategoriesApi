@@ -34,8 +34,8 @@
         "destination": "node_modules",
         "type": "build"
       }, {
-        "source": ".nomad.json",
-        "destination": "nomad.json",
+        "source": "*.nomad.json",
+        "destination": null,
         "type": "build"
       }],
       "properties": [],

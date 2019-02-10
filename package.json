@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore",
     "build:dev": "webpack",
     "build:release": "webpack -p",
-    "start": "npm run build:dev && node dist/host.js",
+    "start": "npm run build:dev && PORT=8082 node dist/host.js",
     "dev:start": "forever start --watch --watch-dir src/api ./src/host.js",
     "dev:stop": "forever stop src/host.js",
     "dev": "webpack-dev-server --inline --hot --open --config ./spec/webpack.config.js"

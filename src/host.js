@@ -7,28 +7,27 @@ const categories = require("./categories.json");
 
 app.use(helmet());
 
-app.use(cors({
-  origin: "*"
-}));
+app.use(
+  cors({
+    origin: "*"
+  })
+);
 
 app.get("/api/categories", (request, response) => {
-  response
-    .status(200)
-    .json(categories);
+  response.status(200).json(categories);
   response.end();
 });
 
 // Express requires the signature to include all four parameters
 // eslint-disable-next-line no-unused-vars
 app.use((error, request, response, next) => {
-  response
-    .status(500)
-    .send(error);
+  response.status(500).send(error);
   response.end();
 });
 
-const port = 8080;
-
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  console.log(`listening on port ${port}...`);
+  console.log(
+    `${process.env.npm_package_name} is ready at port ${port}, captain!`
+  );
 });

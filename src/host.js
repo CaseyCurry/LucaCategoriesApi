@@ -1,9 +1,9 @@
-"use strict";
+import express from "express";
+import helmet from "helmet";
+import cors from "cors";
+import categories from "./categories";
 
-const app = require("express")();
-const helmet = require("helmet");
-const cors = require("cors");
-const categories = require("./categories.json");
+const app = express();
 
 app.use(helmet());
 
@@ -13,13 +13,12 @@ app.use(
   })
 );
 
-app.get("/api/categories", (request, response) => {
+app.get("/api/categories", async (request, response) => {
   response.status(200).json(categories);
   response.end();
 });
 
 // Express requires the signature to include all four parameters
-// eslint-disable-next-line no-unused-vars
 app.use((error, request, response, next) => {
   response.status(500).send(error);
   response.end();

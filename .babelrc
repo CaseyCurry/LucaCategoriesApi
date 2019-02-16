@@ -1,6 +1,7 @@
 {
-  "presets": [
-    "es2015"
-  ],
-  "plugins": []
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-async-to-generator"
+  ]
 }

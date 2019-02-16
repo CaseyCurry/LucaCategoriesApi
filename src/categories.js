@@ -1,5 +1,5 @@
-{
-  "income": [
+export default {
+  income: [
     "salary/bonus",
     "interest",
     "royalties",
@@ -7,8 +7,8 @@
     "rent",
     "sell of asset"
   ],
-  "investments": ["commodities", "stocks", "401k", "real estate"],
-  "housing": [
+  investments: ["commodities", "stocks", "401k", "real estate"],
+  housing: [
     "mortgage",
     "rent",
     "phone",
@@ -22,7 +22,7 @@
     "storage",
     "miscellaneous"
   ],
-  "transportation": [
+  transportation: [
     "car note/lease",
     "insurance",
     "fuel",
@@ -31,8 +31,8 @@
     "tolls/parking",
     "miscellaneous"
   ],
-  "food": ["restaraunt", "groceries", "fast-food", "coffee", "miscellaneous"],
-  "recreation": [
+  food: ["restaraunt", "groceries", "fast-food", "coffee", "miscellaneous"],
+  recreation: [
     "bar",
     "dating",
     "music & movies",
@@ -42,9 +42,9 @@
     "photography",
     "miscellaneous"
   ],
-  "clothing": ["miscellaneous"],
-  "travel": ["miscellaneous"],
-  "professional": [
+  clothing: ["miscellaneous"],
+  travel: ["miscellaneous"],
+  professional: [
     "training",
     "computer equipment",
     "software licences/subscriptions",
@@ -53,7 +53,7 @@
     "travel",
     "miscellaneous"
   ],
-  "credit": ["miscellaneous"],
-  "health": ["miscellaneous"],
-  "miscellaneous": ["miscellaneous"]
-}
+  credit: ["miscellaneous"],
+  health: ["miscellaneous"],
+  miscellaneous: ["miscellaneous"]
+};

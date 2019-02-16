@@ -1,8 +1,7 @@
 {
-  "name": "luca-categories-api",
+  "name": "luca-categories-application-services",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/handler.js",
   "scripts": {
     "coverage": "nyc npm run test",
     "test": "JWT_SECRET=123 mocha --opts mocha.opts",

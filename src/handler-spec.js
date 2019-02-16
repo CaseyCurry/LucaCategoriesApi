@@ -5,7 +5,12 @@ describe("handler test suite", () => {
   let response;
 
   beforeEach(async () => {
-    response = await get();
+    response = await get({
+      headers: {
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTAzMzkxNjEsImV4cCI6MTU1MDQwMzk2MX0.6A_EfRgXnGsFpXsVRTVxSg566dAhNSM8YdVLEepKe-k"
+      }
+    });
   });
 
   it("should return a 200 status", () => {

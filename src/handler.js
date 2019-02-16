@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { categories } from "./categories";
 
+// TODO: unit test 401 cases
 export const get = async event => {
   const token = event.headers.Authorization;
   if (!token) {

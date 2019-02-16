@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { get } from "./handler";
+import { get } from "./get-handler";
 
 describe("handler test suite", () => {
   let response;

@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import { categories } from "./categories";
 
-// TODO: unit test 401 cases
 export const get = async event => {
   const token = event.headers.Authorization;
   if (!token) {
@@ -10,9 +9,13 @@ export const get = async event => {
     };
   }
   try {
-    jwt.verify(token, process.env.JWT_SECRET);
+    jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
+    // TODO: make this more multi-tenant friendly
     return {
       statusCode: 200,
+      headers: {
+        "cache-control": "max-age=300"
+      },
       body: JSON.stringify(categories)
     };
   } catch (error) {

@@ -1,14 +1,11 @@
-#
-# For full config options, check the docs: docs.serverless.com
-#
-
-service: luca-categories-application-services
+service: ${file(package.json):name}
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
   region: us-west-2
+  memorySize: 128
   environment:
     JWT_SECRET: ${self:custom.secrets.jwtSecret}
 
@@ -31,27 +28,3 @@ functions:
       - http:
           path: /categories
           method: GET
-#      - cloudwatchEvent:
-#          event:
-#            source:
-#              - "aws.ec2"
-#            detail-type:
-#              - "EC2 Instance State-change Notification"
-#            detail:
-#              state:
-#                - pending
-#      - cloudwatchLog: '/aws/lambda/hello'
-#    environment:
-#      variable2: value2
-
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"

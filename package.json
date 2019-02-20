@@ -1,13 +1,13 @@
 {
-  "name": "luca-categories-application-services",
+  "name": "luca-categories-app-svcs",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "coverage": "nyc npm run test",
-    "test": "JWT_SECRET=123 mocha --opts mocha.opts",
+    "test": "mocha --opts mocha.opts",
     "lint": "eslint . --ext .js --ignore-path .gitignore",
     "deploy": "npm run test && serverless deploy",
-    "start": "npm run test && serverless offline start --port 8082"
+    "start": "npm run test && serverless offline start"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "eslint-loader": "^2.1.1",
     "mocha": "^5.2.0",
     "nyc": "^13.3.0",
+    "proxyquire": "^2.1.0",
     "serverless": "^1.37.1",
     "serverless-offline": "^4.4.2",
     "serverless-webpack": "^5.2.0",

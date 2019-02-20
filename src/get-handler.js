@@ -9,7 +9,7 @@ export const get = async event => {
     };
   }
   try {
-    jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
+    jwt.verify(token.replace("Bearer ", ""), process.env.jwtSecret);
     // TODO: make this more multi-tenant friendly
     return {
       statusCode: 200,

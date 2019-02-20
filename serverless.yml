@@ -7,7 +7,7 @@ provider:
   region: us-west-2
   memorySize: 128
   environment:
-    JWT_SECRET: ${self:custom.secrets.jwtSecret}
+    jwtSecret: ${self:custom.secrets.jwtSecret}
 
 plugins:
   - serverless-webpack

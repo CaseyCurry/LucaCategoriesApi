@@ -3,11 +3,15 @@ service: ${file(package.json):name}
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
-  region: us-west-2
+  stage: ${opt:stage, "dev"}
+  region: ${opt:region, "us-west-2"}
+  stackName:
+    name: ${self:provider.stage}-${self:service}
   memorySize: 128
   environment:
     jwtSecret: ${self:custom.secrets.jwtSecret}
+  deploymentBucket:
+    name: ${self:provider.stage}-deployment-${self:service}
 
 plugins:
   - serverless-webpack
@@ -23,8 +27,10 @@ package:
 
 functions:
   get:
+    name: ${self:provider.stackName.name}-get
     handler: src/get-handler.get
     events:
       - http:
           path: /categories
           method: GET
+          cors: true

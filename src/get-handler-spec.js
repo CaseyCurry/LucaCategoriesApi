@@ -28,7 +28,7 @@ describe("handler test suite", () => {
 
     it("should return the cache control header with a max age", () => {
       expect(
-        response.headers["cache-control"].indexOf("max-age=") === 0
+        response.headers["Cache-Control"].indexOf("max-age=") === 0
       ).to.equal(true);
     });
   });

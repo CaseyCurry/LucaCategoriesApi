@@ -14,7 +14,9 @@ export const get = async event => {
     return {
       statusCode: 200,
       headers: {
-        "cache-control": "max-age=300"
+        "Content-Type": "application/json",
+        "Cache-Control": "max-age=300",
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify(categories)
     };

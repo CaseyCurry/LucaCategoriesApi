@@ -7,6 +7,7 @@
     "test": "mocha --opts mocha.opts",
     "lint": "eslint . --ext .js --ignore-path .gitignore",
     "deploy": "npm run test && serverless deploy",
+    "deploy:prod": "npm run test && serverless deploy --stage prod",
     "start": "npm run test && serverless offline start"
   },
   "author": "",

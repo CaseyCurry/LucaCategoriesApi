@@ -12,15 +12,20 @@ provider:
     jwtSecret: ${self:custom.secrets.jwtSecret}
   deploymentBucket:
     name: ${self:provider.stage}-deployment-${self:service}
+  versionFunctions: false
 
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-prune-plugin
 
 custom:
   secrets: ${file(config/secrets.json)}
   webpack:
     includeModules: true
+  prune:
+    automatic: true
+    number: 2
 
 package:
   individually: true

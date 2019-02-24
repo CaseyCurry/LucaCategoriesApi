@@ -140,7 +140,7 @@ export const categories = [
     subcategories: [
       {
         id: "7ddcc2ec-3201-11e9-b210-d663bd873d93",
-        name: "restaraunt"
+        name: "restaurant"
       },
       {
         id: "7ddcc594-3201-11e9-b210-d663bd873d93",
@@ -178,10 +178,6 @@ export const categories = [
       {
         id: "c666000a-3201-11e9-b210-d663bd873d93",
         name: "books"
-      },
-      {
-        id: "c666015e-3201-11e9-b210-d663bd873d93",
-        name: "gym"
       },
       {
         id: "c6660294-3201-11e9-b210-d663bd873d93",
@@ -260,6 +256,14 @@ export const categories = [
   {
     name: "health",
     subcategories: [
+      {
+        id: "c666015e-3201-11e9-b210-d663bd873d93",
+        name: "gym"
+      },
+      {
+        id: "0f53d5fa-6690-4e17-b7ac-488d1dee8b40",
+        name: "vision"
+      },
       {
         id: "b6a69fca-3202-11e9-b210-d663bd873d93",
         name: "miscellaneous"

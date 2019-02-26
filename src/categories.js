@@ -194,15 +194,6 @@ export const categories = [
     ]
   },
   {
-    name: "clothing",
-    subcategories: [
-      {
-        id: "3851a829-6c35-45e5-bade-a6a6a31270b7",
-        name: "miscellaneous"
-      }
-    ]
-  },
-  {
     name: "travel",
     subcategories: [
       {
@@ -245,15 +236,6 @@ export const categories = [
     ]
   },
   {
-    name: "credit",
-    subcategories: [
-      {
-        id: "b6a69d2c-3202-11e9-b210-d663bd873d93",
-        name: "miscellaneous"
-      }
-    ]
-  },
-  {
     name: "health",
     subcategories: [
       {
@@ -273,6 +255,14 @@ export const categories = [
   {
     name: "miscellaneous",
     subcategories: [
+      {
+        id: "3851a829-6c35-45e5-bade-a6a6a31270b7",
+        name: "clothing"
+      },
+      {
+        id: "b6a69d2c-3202-11e9-b210-d663bd873d93",
+        name: "credit"
+      },
       {
         id: "b6a6a128-3202-11e9-b210-d663bd873d93",
         name: "miscellaneous"
